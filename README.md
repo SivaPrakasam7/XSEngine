@@ -1,0 +1,71 @@
+# XSEngine ( Xpath Scrap Engine using selenium )
+
+REQUIREMENTS
+---
+    Current-drirectory# npm install package.json
+
+RUN
+---
+    Current-directory# node app.js
+
+USE
+---
+use Xpath like below format 
+
+SCRAP XPATH FORMAT
+---
+
+    {
+        Key: {
+            Login:['{for login web site}']
+            Url:'/{for url get request}'
+            xpath: "//img[contains(@src,'https://avatars.githubusercontent.com/u/') and contains(@src,'?v=4')]",
+            func: "elem.getAttribute('src')"
+            (or)
+            func:{
+                key:"elem.getAttribute('alt')",
+                key:"elem.getText()",
+                key:"{more}"
+            }
+        }
+    }
+
+SAMPLE OUTPUT
+---
+    {
+        Profile: 'https://avatars.githubusercontent.com/u/66865924?v=4',
+        Name: [ 'Sivaprakasam', 'SivaPrakasam7' ],
+        About: [
+            '5 followers · 5 following · 0',
+            'sivaprakasam.educationhost.cloud'
+        ],
+        Achivements: { Img: null, AltText: null },
+        Organization: {
+            Link: 'https://github.com/CSEKINGS',
+            Payload: '{"event_type":"user_profile.click","payload":{"profile_user_id":66865924,"target":"MEMBER_ORGANIZATION_AVATAR","user_id":null,"originating_url":"https://github.com/SivaPrakasam7"}}'
+        },
+        Projects: [
+            {
+            Link: 'https://github.com/SivaPrakasam7/WPDRouter',
+            Content: [Array]
+            },
+            {
+            Link: 'https://github.com/SivaPrakasam7/SivaPrakasam7.github.io',
+            Content: [Array]
+            },
+            {
+            Link: 'https://github.com/SivaPrakasam7/ISPLOIT',
+            Content: [Array]
+            },
+            {
+            Link: 'https://github.com/SivaPrakasam7/SociaLod',
+            Content: [Array]
+            },
+            {
+            Link: 'https://github.com/SivaPrakasam7/NodeAuth',
+            Content: [Array]
+            }
+        ],
+        Activity: [],
+        Social: []
+    }
