@@ -2,6 +2,7 @@
 
 Xpath scrap engine using selenium. User identify scraping xpath and create below xpath format.
 You should now about xpath structures. 
+reference: <a href="https://www.w3schools.com/xml/xpath_intro.asp">Tutorial here</a>
 
 REQUIREMENTS
 ---
