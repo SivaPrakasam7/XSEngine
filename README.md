@@ -30,6 +30,8 @@ use Xpath like below format
 
 SAMPLE OUTPUT
 ---
+
+    // This is sample output for scrap user profile
     {
         Profile: 'https://avatars.githubusercontent.com/u/66865924?v=4',
         Name: [ 'Sivaprakasam', 'SivaPrakasam7' ],
