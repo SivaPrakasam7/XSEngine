@@ -1,5 +1,8 @@
 # XSEngine ( Xpath Scrap Engine using selenium )
 
+Xpath scrap engine using selenium. User identify scraping xpath and create below xpath format.
+You should now about xpath structures. 
+
 REQUIREMENTS
 ---
     Current-drirectory# npm install package.json
