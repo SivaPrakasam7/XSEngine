@@ -11,10 +11,7 @@ RUN
 USE
 ---
 use Xpath like below format 
-
-SCRAP XPATH FORMAT
----
-
+    // SCRAP XPATH FORMAT
     {
         Key: {
             Login:['{for login web site}']
