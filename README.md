@@ -6,7 +6,7 @@ reference: <a href="https://www.w3schools.com/xml/xpath_intro.asp">Tutorial here
 
 REQUIREMENTS
 ---
-    Current-drirectory# npm install package.json
+    Current-drirectory# npm install
 
 RUN
 ---
