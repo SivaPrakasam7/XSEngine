@@ -19,9 +19,10 @@ use Xpath like below format
     // SCRAP XPATH FORMAT
     {
         Key: {
-            Login:['{for login web site}']
-            Url:'/{for url get request}'
-            xpath: "//img[contains(@src,'https://avatars.githubusercontent.com/u/') and contains(@src,'?v=4')]",
+            Login:['{for login web site}'],
+            Url:'{for url get request}',
+            Script:'{Javascript execute}',
+            xpath: "{Xpath of tag}",
             func: "elem.getAttribute('src')"
             (or)
             func:{
