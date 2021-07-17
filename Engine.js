@@ -1,24 +1,26 @@
 const { Builder, By, Key, until } = require('selenium-webdriver'),
-    chrome = require('selenium-webdriver/chrome'),
-    options = new chrome.Options();
-options.addArguments('--disable-popup-blocking');
-options.addArguments('--disable-notifications');
-// options.addArguments('--headless'); // Hidden browser
-// options.addArguments('--proxy-server=socks5://localhost:9050'); // Set Proxy server
-options.addArguments('--disable-default-apps');
+    chrome = require('selenium-webdriver/chrome');
 
 module.exports = class Browser {
-    constructor(url, edata,options) {
-        this.url = url;
+    constructor(username, edata) {
+        this.username = username;
+        this.url;
         this.edata = edata;
         this.data = {};
-        this.driver = new Builder().forBrowser('chrome').setChromeOptions(options).build();
+        this.options = new chrome.Options();
+        this.dirver;
     }
     async scrap() {
+        var tmp;
         try {
-            await this.driver.get(this.url);
             for (const [k, v] of Object.entries(this.edata)) {
-                if (k == "Login") {
+                if (k == "Options") {
+                    for (var arg of v) this.options.addArguments(`--${arg}`);
+                    this.driver = chrome.Driver.createSession(new chrome.Options(this.options), new chrome.ServiceBuilder().build());
+                } else if (k == "Main") {
+                    this.url = eval(v);
+                    await this.driver.get(this.url);
+                } else if (k == "Login") {
                     for (var ck of v) await this.driver.executeScript(ck);
                     await this.driver.get(this.url);
                 } else {
@@ -32,20 +34,20 @@ module.exports = class Browser {
                             for (const [k1, v1] of Object.entries(v.func)) { tmp[k1] = await eval(v1).catch(() => { return null }) };
                             this.data[k].push(tmp);
                         }
-                        // console.log(this.data[k]);
                     }
                     this.data[k] = [...new Set(this.data[k])];
-                    while (true) {
-                        if (this.data[k].length == 1) {
-                            this.data[k] = this.data[k][0];
-                        } else break;
+                    for (var i of this.data[k]) Array.isArray(i) && i.length === 0 && this.data[k].pop(i);
+                    while (typeof this.data[k] != "string") {
+                        this.data[k] = this.data[k].length != 1 ? this.data[k] : this.data[k][0];
+                        if (tmp === this.data[k]) break;
+                        tmp = this.data[k];
                     }
                 }
             }
         } catch (err) {
-            console.log(err);
+            return err;
         } finally {
-            await this.driver.quit();
+            this.driver.quit();
         }
         return this.data;
     }

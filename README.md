@@ -19,6 +19,8 @@ use Xpath like below format
     // SCRAP XPATH FORMAT
     {
         Key: {
+            Options:[Selenium driver options without --],
+            Main:'`https://github.com/${this.username}`', # Main url to parse
             Login:['{for login web site}'],
             Url:'{for url get request}',
             Script:'{Javascript execute}',
@@ -38,7 +40,7 @@ use Xpath like below format
     const Browser = require('./Engine'),
     sample = require('./github');
 
-    browser=new Browser('https://github.com/SivaPrakasam7',sample);
+    browser=new Browser('SivaPrakasam7',sample);
     browser.scrap().then(res => { console.log(res) });
 
 SAMPLE OUTPUT
