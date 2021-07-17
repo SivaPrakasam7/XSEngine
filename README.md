@@ -19,7 +19,7 @@ use Xpath like below format
     // SCRAP XPATH FORMAT
     {
         Key: {
-            Options:[Selenium driver options without --],
+            Options:['{Selenium driver options without --}','headless'],
             Main:'`https://github.com/${this.username}`', # Main url to parse
             Login:['{for login web site}'],
             Url:'{for url get request}',
@@ -51,7 +51,7 @@ SAMPLE OUTPUT
         Profile: 'https://avatars.githubusercontent.com/u/66865924?v=4',
         Name: [ 'Sivaprakasam', 'SivaPrakasam7' ],
         About: [
-            '5 followers · 5 following · 0',
+            '5 followers · 5 following · 2',
             'sivaprakasam.educationhost.cloud'
         ],
         Achivements: { Img: null, AltText: null },
@@ -61,26 +61,45 @@ SAMPLE OUTPUT
         },
         Projects: [
             {
-            Link: 'https://github.com/SivaPrakasam7/WPDRouter',
-            Content: [Array]
-            },
-            {
-            Link: 'https://github.com/SivaPrakasam7/SivaPrakasam7.github.io',
-            Content: [Array]
-            },
-            {
             Link: 'https://github.com/SivaPrakasam7/ISPLOIT',
             Content: [Array]
             },
             {
-            Link: 'https://github.com/SivaPrakasam7/SociaLod',
+            Link: 'https://github.com/CSEKINGS/book_donation_backend',
+            Content: [Array]
+            },
+            {
+            Link: 'https://github.com/SivaPrakasam7/XSEngine',
+            Content: [Array]
+            },
+            {
+            Link: 'https://github.com/SivaPrakasam7/WPDRouter',
             Content: [Array]
             },
             {
             Link: 'https://github.com/SivaPrakasam7/NodeAuth',
             Content: [Array]
+            },
+            {
+            Link: 'https://github.com/SivaPrakasam7/SociaLod',
+            Content: [Array]
             }
         ],
-        Activity: [],
-        Social: []
+        Activity: [
+            [
+            'Created 30 commits in 3 repositories',
+            'CSEKINGS/book_donation_backend',
+            '17 commits',
+            'SivaPrakasam7/XSEngine',
+            '12 commits',
+            'SivaPrakasam7/NodeAuth',
+            '1 commit'
+            ],
+            [
+            'Created 1 repository',
+            'SivaPrakasam7/XSEngine',
+            'JavaScript',
+            'Jul 6'
+            ]
+        ]
     }
