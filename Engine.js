@@ -15,10 +15,13 @@ module.exports = class Browser {
         try {
             for (const [k, v] of Object.entries(this.edata)) {
                 if (k == "Options") {
+                    // v.pop();
                     for (var arg of v) this.options.addArguments(`--${arg}`);
                     this.driver = chrome.Driver.createSession(new chrome.Options(this.options), new chrome.ServiceBuilder().build());
                 } else if (k == "Main") {
                     this.url = eval(v);
+                    this.data.Username = this.username;
+                    this.data.Link = this.url;
                     await this.driver.get(this.url);
                 } else if (k == "Login") {
                     for (var ck of v) await this.driver.executeScript(ck);
@@ -27,12 +30,15 @@ module.exports = class Browser {
                     if (v.Url) await this.driver.get(this.url + v.Url);
                     if (v.Script) await this.driver.executeScript(v.Script);
                     this.data[k] = [];
-                    for (var elem of await this.driver.wait(until.elementsLocated(By.xpath(v.xpath)), 10000).catch(() => { return [null] })) {
+                    for (var elem of await this.driver.wait(until.elementsLocated(By.xpath(v.xpath)), 5000).catch(() => { return [null] })) {
                         if (typeof v.func === "string" && elem) { this.data[k].push(await eval(v.func).catch(err => { return null })); }
                         else if (elem) {
                             var tmp = {};
                             for (const [k1, v1] of Object.entries(v.func)) { tmp[k1] = await eval(v1).catch(() => { return null }) };
-                            this.data[k].push(tmp);
+                            const chk = Object.values(tmp).filter(Boolean);
+                            if (chk.length) {
+                                if (chk[0].length) { this.data[k].push(tmp); }
+                            }
                         }
                     }
                     this.data[k] = [...new Set(this.data[k])];
