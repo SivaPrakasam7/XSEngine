@@ -1,5 +1,8 @@
 const Browser = require('./Engine'),
     sample = require('./github');
 
-browser=new Browser('SivaPrakasam7',sample);
-browser.scrap().then(res => { console.log(res) });
+(async () => {
+    Browser.username = "SivaPrakasam7";
+    Browser.edata = sample;
+    console.log(await Browser.scrap());
+})();
