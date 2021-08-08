@@ -1,8 +1,8 @@
 const Browser = require('./Engine'),
-    sample = require('./github');
+    sample = require('./site');
 
 (async () => {
-    Browser.username = "SivaPrakasam7";
+    Browser.username = "https://nmap.org";
     Browser.edata = sample;
     console.log(await Browser.scrap());
 })();

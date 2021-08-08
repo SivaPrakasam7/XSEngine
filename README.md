@@ -14,34 +14,8 @@ RUN
 
 USE
 ---
-use Xpath like below format 
-    
-    // SCRAP XPATH FORMAT
-    {
-        Key: {
-            Options:['{Selenium driver options without --}','headless'],
-            Main:'`https://github.com/${this.username}`', # Main url to parse
-            Login:['{for login web site}'],
-            Url:'{for url get request}',
-            Script:'{Javascript execute}',
-            xpath: "{Xpath of tag}",
-            func: "elem.getAttribute('src')"
-            (or)
-            func:{
-                key:"elem.getAttribute('alt')",
-                key:"elem.getText()",
-                key:"{more}"
-            }
-        }
-    }
+Refer input format from site.js
 
-    // Import module and use
-
-    const Browser = require('./Engine'),
-    sample = require('./github');
-
-    browser=new Browser('SivaPrakasam7',sample);
-    browser.scrap().then(res => { console.log(res) });
 
 SAMPLE OUTPUT
 ---
